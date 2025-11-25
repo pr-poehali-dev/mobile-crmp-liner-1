@@ -2,9 +2,19 @@ import { CRMPGame } from '@/components/CRMPGame';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const Game = () => {
   const navigate = useNavigate();
+
+  const handleShare = () => {
+    const gameUrl = window.location.href;
+    navigator.clipboard.writeText(gameUrl).then(() => {
+      toast.success('Ссылка скопирована!', {
+        description: 'Теперь можешь поделиться игрой с друзьями'
+      });
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -31,14 +41,21 @@ const Game = () => {
             <CRMPGame />
           </div>
 
-          <div className="text-center">
+          <div className="flex justify-center gap-3">
+            <Button
+              onClick={handleShare}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              <Icon name="Share2" className="mr-2" size={18} />
+              Поделиться
+            </Button>
             <Button
               onClick={() => navigate('/')}
               variant="outline"
               className="border-primary/30 hover:bg-primary/10 hover:border-primary"
             >
               <Icon name="ArrowLeft" className="mr-2" size={18} />
-              Вернуться к лаунчеру
+              К лаунчеру
             </Button>
           </div>
 
