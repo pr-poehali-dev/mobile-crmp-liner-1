@@ -52,14 +52,6 @@ const Index = () => {
               </h1>
             </div>
             <p className="text-lg text-muted-foreground">CRMP Launcher</p>
-            <div className="mt-2 flex items-center justify-center gap-2 text-sm">
-              <div className="flex items-center gap-1 text-green-400">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                <span>Онлайн</span>
-              </div>
-              <span className="text-muted-foreground">•</span>
-              <span className="text-muted-foreground">250 игроков</span>
-            </div>
           </div>
 
           <Card className="p-8 bg-card/80 border-border backdrop-blur-xl animate-scale-in shadow-2xl">
