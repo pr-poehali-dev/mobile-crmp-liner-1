@@ -3,9 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
+import { CRMPGame } from '@/components/CRMPGame';
 
 const Index = () => {
   const [nickname, setNickname] = useState('');
+  const [showGame, setShowGame] = useState(false);
 
   const handlePlayClick = () => {
     if (!nickname.trim()) {
@@ -40,8 +42,8 @@ const Index = () => {
         }}
       />
       
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-2xl">
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4 py-12">
+        <div className="w-full max-w-2xl space-y-6">
           <div className="text-center mb-8 animate-fade-in">
             <div className="flex items-center justify-center mb-4">
               <Icon name="Umbrella" size={48} className="text-primary mr-3" />
@@ -123,7 +125,24 @@ const Index = () => {
             </div>
           </Card>
 
-          <div className="mt-6 text-center animate-fade-in">
+          <div className="text-center">
+            <Button
+              onClick={() => setShowGame(!showGame)}
+              variant="ghost"
+              className="text-primary hover:text-primary/80"
+            >
+              <Icon name={showGame ? "ChevronUp" : "Gamepad"} className="mr-2" size={18} />
+              {showGame ? 'Скрыть игру' : 'Попробовать мини-игру'}
+            </Button>
+          </div>
+
+          {showGame && (
+            <div className="animate-scale-in">
+              <CRMPGame />
+            </div>
+          )}
+
+          <div className="text-center animate-fade-in">
             <p className="text-sm text-muted-foreground">
               Версия 1.0.0 • © 2024 Umbrella CRMP
             </p>
