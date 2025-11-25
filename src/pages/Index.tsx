@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
-import { CRMPGame } from '@/components/CRMPGame';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const [nickname, setNickname] = useState('');
-  const [showGame, setShowGame] = useState(false);
+  const navigate = useNavigate();
 
   const handlePlayClick = () => {
     if (!nickname.trim()) {
@@ -127,20 +127,14 @@ const Index = () => {
 
           <div className="text-center">
             <Button
-              onClick={() => setShowGame(!showGame)}
+              onClick={() => navigate('/game')}
               variant="ghost"
               className="text-primary hover:text-primary/80"
             >
-              <Icon name={showGame ? "ChevronUp" : "Gamepad"} className="mr-2" size={18} />
-              {showGame ? 'Скрыть игру' : 'Попробовать мини-игру'}
+              <Icon name="Gamepad" className="mr-2" size={18} />
+              Попробовать мини-игру
             </Button>
           </div>
-
-          {showGame && (
-            <div className="animate-scale-in">
-              <CRMPGame />
-            </div>
-          )}
 
           <div className="text-center animate-fade-in">
             <p className="text-sm text-muted-foreground">
