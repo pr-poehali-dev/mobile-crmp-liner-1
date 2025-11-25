@@ -14,7 +14,7 @@ const Index = () => {
       alert('Введите никнейм перед началом игры');
       return;
     }
-    window.open('samp://play', '_self');
+    navigate('/game');
   };
 
   const handleVkClick = () => {
@@ -124,17 +124,6 @@ const Index = () => {
               </div>
             </div>
           </Card>
-
-          <div className="text-center">
-            <Button
-              onClick={() => navigate('/game')}
-              variant="ghost"
-              className="text-primary hover:text-primary/80"
-            >
-              <Icon name="Gamepad" className="mr-2" size={18} />
-              Попробовать мини-игру
-            </Button>
-          </div>
 
           <div className="text-center animate-fade-in">
             <p className="text-sm text-muted-foreground">
